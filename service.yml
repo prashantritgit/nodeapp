@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+  labels:
+    app: nginx
+spec:
+  type: NodePort  # Use NodePort if running on a local cluster like Minikube
+  ports:
+  - port: 80               # The port exposed by the service
+    targetPort: 80         # The port on the container
+    protocol: TCP
+  selector:
+    app: nginx  # Matches the labels of the deployment
+
